@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <h2>Groups</h2>
+
+    {% from 'bootstrap5/table.html' import render_table %}
+
+{{ render_table(data, show_actions=True, model=Model,
+                view_url=('authentication.group_view', [('group_id', ':id')]),
+                edit_url=('authentication.group_edit', [('group_id', ':id')]),
+                delete_url=('authentication.group_delete', [('group_id', ':id')]),
+                new_url=url_for('authentication.group')) }}{% endblock %}
+
+{% from 'bootstrap5/pagination.html' import render_pagination %}
+
+{{ render_pagination(pagination) }}

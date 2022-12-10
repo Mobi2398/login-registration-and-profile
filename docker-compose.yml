@@ -1,0 +1,12 @@
+version: "3.2"
+services:
+  flask:
+    build: .
+    restart: always
+    ports:
+      - "80:8080"
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    command: ["./development.sh"]
+    volumes:
+      - .:/home/myuser
